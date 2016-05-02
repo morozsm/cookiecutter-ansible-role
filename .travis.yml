@@ -1,0 +1,21 @@
+## Travis CI configuration for the cookiecutter-python-app project template.
+##
+##   <https://travis-ci.org/mdklatt/cookiecutter-python-app>
+##
+language: python
+
+python:
+  - "2.7"
+
+branches:
+  only:
+    - master
+    - dev
+
+sudo: false
+
+before_script:
+  - pip install --requirement=requirements.txt
+
+script:
+  - python test.py
