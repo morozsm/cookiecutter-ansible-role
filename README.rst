@@ -2,7 +2,7 @@
 
 Ansible Role Project Template
 =============================
-..  |travis.png| image:: https://travis-ci.org/mdklatt/cookiecutter-python-app.png?branch=master
+..  |travis.png| image:: https://travis-ci.org/mdklatt/cookiecutter-ansible-role.png?branch=master
     :alt: Travis CI build status
     :target: `travis`_
 ..  _travis: https://travis-ci.org/mdklatt/cookiecutter-ansible-role
