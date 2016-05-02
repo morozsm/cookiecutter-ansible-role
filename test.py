@@ -11,6 +11,7 @@ from os import getcwd
 from shlex import split
 from shutil import rmtree
 from subprocess import check_call
+from subprocess import check_output
 from tempfile import mkdtemp
 
 

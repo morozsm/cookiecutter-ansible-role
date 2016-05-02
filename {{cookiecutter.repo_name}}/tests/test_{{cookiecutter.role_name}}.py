@@ -13,6 +13,7 @@ from os.path import join
 from shlex import split
 from shutil import copytree
 from subprocess import call
+from subprocess import check_output
 
 import pytest
 
@@ -36,6 +37,7 @@ def test_role(install):
     """
     ansible = "ansible-playbook --syntax-check playbook.yml"
     assert 0 == call(split(ansible), cwd=join(install, "tests"))
+    return
 
 
 # Make the module executable.

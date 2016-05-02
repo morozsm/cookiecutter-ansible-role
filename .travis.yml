@@ -1,21 +1,22 @@
-## Travis CI configuration for the cookiecutter-python-app project template.
+## Travis CI configuration for the ansible-role project template.
 ##
-##   <https://travis-ci.org/mdklatt/cookiecutter-python-app>
+##  <https://travis-ci.org/mdklatt/cookiecutter-ansible-role>
 ##
 language: python
 
 python:
-  - "2.7"
+- "2.7"
 
 branches:
   only:
-    - master
-    - dev
+  - master
+  - dev
 
-sudo: false
+sudo: false  # use container infrastructure
 
-before_script:
-  - pip install --requirement=requirements.txt
+install:
+- pip install ansible
+- pip install -r requirements.txt
 
 script:
-  - python test.py
+- python test.py
