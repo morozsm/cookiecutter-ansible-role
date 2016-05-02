@@ -23,7 +23,7 @@ def install(tmpdir):
 
     """
     pathobj = tmpdir.join("{{ cookiecutter.role_name }}")
-    dirs = "defaults", "handlers", "meta", "tasks", "tests"
+    dirs = "defaults", "handlers", "meta", "tasks", "tests", "vars"
     root = dirname(dirname(abspath(__file__)))
     for name in dirs:
         copytree(join(root, name), join(pathobj.strpath, name))
