@@ -31,7 +31,7 @@ def install(tmpdir):
     return pathobj.strpath
 
 
-def test_role(install):
+def test_syntax(install):
     """ Test the role syntax.
 
     """
