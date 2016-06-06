@@ -39,5 +39,5 @@ Example Playbook
     - hosts: all
       
       roles:
-      - role: {{ "{{" ~ cookiecutter.repo_name ~ "}}" }}
-        {{ "{{" ~ cookiecutter.repo_name ~ "}}" }}_debug: True
+      - role: {{ cookiecutter.role_name }}
+        {{ cookiecutter.role_name }}_debug: True
