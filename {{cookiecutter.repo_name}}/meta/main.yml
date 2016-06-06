@@ -7,14 +7,15 @@ dependencies: []
 
 galaxy_info:
   author: {{ cookiecutter.author_name }}
-  description: 
-  licese: MIT
+  description:
+  version: {{ cookiecutter.project_version }}
+  license: MIT
+  min_nsible_version: 2.0
+
   
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker
-
-  min_ansible_version: 2.0
 
   # Optionally specify the branch Galaxy will use when accessing the GitHub
   # repo for this role. During role install, if no tags are available,
