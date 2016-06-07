@@ -1,7 +1,7 @@
 ..  README for the {{ cookiecutter.role_name }} role.
 
-tmpdir 
-======
+{{ cookiecutter.role_name }}
+{{ "=" * cookiecutter.role_name|length }}
 ..  |travis.png| image:: https://travis-ci.org/mdklatt/{{ cookiecutter.repo_name }}.png?branch=master
     :alt: Travis CI build status
     :target: `travis`_
