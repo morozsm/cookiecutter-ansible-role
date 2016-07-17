@@ -7,17 +7,11 @@ precedence over the version in this project directory. Use a virtualenv test
 environment or setuptools develop mode to test against the development version.
 
 """
-from os import chdir
-from os import getcwd
 from os.path import abspath
-from os.path import basename
 from os.path import dirname
 from os.path import join
 from shlex import split
 from subprocess import check_call
-from SimpleHTTPServer import SimpleHTTPRequestHandler
-from SocketServer import TCPServer
-from threading import Thread
 from tarfile import TarFile
 
 import pytest
@@ -48,37 +42,14 @@ def package(tmpdir):
     return package_path
 
 
-@pytest.yield_fixture(scope="module")
-def httpd(package):
-    """ Return an HTTP URL to the packaged role.
-
-    Files are served from the current working directory, so changing the
-    directory while this fixture is being used will invalidate the URL.
-
-    """
-    # Yes, this is overkill for unit testing, but ansible-galaxy doesn't handle
-    # local files very well.
-    cwd = getcwd()
-    chdir(dirname(package))
-    httpd = TCPServer(("localhost", 0), SimpleHTTPRequestHandler)
-    host, port = httpd.server_address
-    thread = Thread(target=httpd.serve_forever)
-    thread.daemon = True
-    thread.start()
-    yield "http://{:s}:{:d}/{:s}".format(host, port, basename(package))
-    httpd.shutdown()
-    chdir(cwd)
-    return
-
-
 @pytest.fixture(scope="module")
-def install(tmpdir, httpd):
+def install(tmpdir, package):
     """ Install the role and its dependencies for testing.
 
     """
     role_path = join(tmpdir.strpath, "roles")
-    cmd = "ansible-galaxy install -p {:s} {:s}"
-    check_call(split(cmd.format(role_path, httpd)))
+    cmd = "ansible-galaxy install -p {:s} {:s},,{:s}"
+    check_call(split(cmd.format(role_path, package, _ROLE)))
     return role_path
 
 
