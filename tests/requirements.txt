@@ -1,0 +1,5 @@
+## Python requirements for running the ansible-role tests.
+##
+##    pip install --requirement=requirements.txt
+##
+virtualenv>=15.0.1
