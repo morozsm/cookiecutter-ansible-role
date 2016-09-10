@@ -1,18 +1,22 @@
 """ Test the ansible-role Cookiecutter template.
 
-A template project is created in a temporary directory, the application is
-installed into a self-contained virtualenv environment, and the application
-test suite is run.
+A template project is created in a temporary directory, and the role's test
+suite is run in a virtualenv environment.
 
 """
 from contextlib import contextmanager
+from json import load
 from os import chdir
 from os import getcwd
+from os.path import abspath
+from os.path import dirname
+from os.path import join
 from shlex import split
 from shutil import rmtree
 from subprocess import check_call
-from subprocess import check_output
 from tempfile import mkdtemp
+
+from cookiecutter.main import cookiecutter
 
 
 def main():
@@ -32,16 +36,18 @@ def main():
             chdir(cwd)
         return
 
-    template = getcwd()
+    template = dirname(dirname(abspath(__file__)))
+    defaults = load(open(join(template, "cookiecutter.json")))
     with tmpdir():
-        cookiecutter = "cookiecutter {:s} --no-input".format(template)
-        check_call(split(cookiecutter))
-        chdir("rolename")
+        cookiecutter(template, no_input=True)
+        chdir(defaults["project_name"])
         virtualenv = "virtualenv venv"
         check_call(split(virtualenv))
         install = "venv/bin/pip install --requirement=tests/requirements.txt"
+        # for name in "requirements.txt", "test/requirements.txt":
+        #     install = " ".join((install, "--requirement={:s}".format(name)))
         check_call(split(install))
-        pytest = "venv/bin/python -m pytest --verbose tests"
+        pytest = "venv/bin/py.test --verbose tests/"
         check_call(split(pytest))
     return 0
     
