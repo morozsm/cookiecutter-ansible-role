@@ -2,13 +2,8 @@
 
 {{ cookiecutter.role_name }}
 {{ "=" * cookiecutter.role_name|length }}
-..  |travis.png| image:: https://travis-ci.org/mdklatt/{{ cookiecutter.repo_name }}.png?branch=master
-    :alt: Travis CI build status
-    :target: `travis`_
-..  _travis: https://travis-ci.org/mdklatt/{{ cookiecutter.repo_name }}
 ..  _Ansible: http://docs.ansible.com/ansible
 
-|travis.png|
 
 `Ansible`_ role to ....
 
