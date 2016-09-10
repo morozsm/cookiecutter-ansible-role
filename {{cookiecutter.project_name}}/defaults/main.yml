@@ -1,3 +1,2 @@
 ## Defaults for the {{ cookiecutter.role_name }} role.
 ##
-{{ cookiecutter.role_name }}_debug: False
