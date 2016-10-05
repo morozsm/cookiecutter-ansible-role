@@ -44,8 +44,6 @@ def main():
         virtualenv = "virtualenv venv"
         check_call(split(virtualenv))
         install = "venv/bin/pip install --requirement=tests/requirements.txt"
-        # for name in "requirements.txt", "test/requirements.txt":
-        #     install = " ".join((install, "--requirement={:s}".format(name)))
         check_call(split(install))
         pytest = "venv/bin/py.test --verbose tests/"
         check_call(split(pytest))
