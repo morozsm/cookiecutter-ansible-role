@@ -1,4 +1,10 @@
-# Python
+# Ignore Ansible runtime files.
+
+*.retry
+.galaxy_install_info
+
+
+# Ignore Python build artifacts.
 
 MANIFEST
 build/
@@ -8,34 +14,17 @@ dist/
 *.pyo
 
 
-# pytest
-
-.cache/
-
-
-# Sphinx
-
-_build/
-_static/
-_templates/
-
-
-# virtualenv
+# Ignore virtualenv environments.
 
 venv*/
 
 
-# Vagrant
+# Ignore Vagrant runtime files.
 
 .vagrant/
 
 
-# Ansible
-
-*.retry
-
-
-# IDE settings
+# Ignore settings for various IDEs.
 
 .idea/
 .project/
@@ -43,6 +32,6 @@ venv*/
 nbproject/
 
 
-# OS-specific
+# Ignore OS metadata files.
 
 .DS_Store
