@@ -1,1 +1,1 @@
-localhost ansible_connection=local {{ cookiecutter.role_name }}_debug=True
+localhost ansible_connection=local

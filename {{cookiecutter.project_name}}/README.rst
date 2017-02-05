@@ -6,7 +6,7 @@
 ..  _Ansible: http://docs.ansible.com/ansible
 
 
-`Ansible`_ role to ....
+This `Ansible`_ role will ....
 
 
 Requirements
@@ -29,9 +29,10 @@ should be mentioned here as well.
 
 Example Playbook
 ================
-..  code::
+
+..  code-block::
 
     - hosts: all
       
       roles:
-      - name: {{ cookiecutter.role_name }}
+        - name: {{ cookiecutter.role_name }}
