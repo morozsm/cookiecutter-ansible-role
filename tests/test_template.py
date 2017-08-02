@@ -45,7 +45,7 @@ def main():
         check_call(split(virtualenv))
         install = "venv/bin/pip install --requirement=tests/requirements.txt"
         check_call(split(install))
-        pytest = "venv/bin/py.test --verbose tests/"
+        pytest = "venv/bin/pytest --verbose tests/"
         check_call(split(pytest))
     return 0
     
