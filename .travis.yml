@@ -5,18 +5,18 @@
 language: python
 
 python:
-- "2.7"
+  - "2.7"
 
 branches:
   only:
-  - master
-  - dev
+    - master
+    - dev
 
 sudo: false  # use container infrastructure
 
 install:
-- pip install ansible
-- pip install -r requirements.txt
+  - pip install ansible
+  - pip install -r requirements.txt -r tests/requirements.txt
 
 script:
-- python tests/test_template.py
+  - python tests/test_template.py
