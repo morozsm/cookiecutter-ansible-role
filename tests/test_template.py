@@ -43,9 +43,9 @@ def main():
         chdir(defaults["project_name"])
         virtualenv = "virtualenv venv"
         check_call(split(virtualenv))
-        install = "venv/bin/pip install --requirement=tests/requirements.txt"
+        install = "venv/bin/pip install -r tests/requirements.txt"
         check_call(split(install))
-        pytest = "venv/bin/pytest --verbose tests/"
+        pytest = "venv/bin/pytest tests/"
         check_call(split(pytest))
     return 0
     
