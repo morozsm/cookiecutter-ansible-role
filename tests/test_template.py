@@ -40,7 +40,7 @@ def main():
     defaults = load(open(join(template, "cookiecutter.json")))
     with tmpdir():
         cookiecutter(template, no_input=True)
-        chdir(defaults["project_name"])
+        chdir(defaults["project_slug"])
         virtualenv = "virtualenv venv"
         check_call(split(virtualenv))
         install = "venv/bin/pip install -r tests/requirements.txt"
