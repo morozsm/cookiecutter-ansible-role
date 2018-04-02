@@ -13,8 +13,10 @@ from os.path import dirname
 from os.path import join
 from shlex import split
 from shutil import rmtree
+from shutil import which
 from subprocess import check_call
 from tempfile import mkdtemp
+from venv import create
 
 from cookiecutter.main import cookiecutter
 
@@ -41,12 +43,18 @@ def main():
     with tmpdir():
         cookiecutter(template, no_input=True)
         chdir(defaults["project_slug"])
-        virtualenv = "virtualenv venv"
-        check_call(split(virtualenv))
-        install = "venv/bin/pip install -r tests/requirements.txt"
-        check_call(split(install))
-        pytest = "venv/bin/pytest tests/"
-        check_call(split(pytest))
+        create("venv", with_pip=True)
+        path = join("venv", "bin")
+        pip = which("pip", path=path) or "pip"  # Travis CI workaround
+        install = "{:s} install .".format(pip)
+        for req in (join(root, "requirements.txt") for root in (".", "test")):
+            # Add each requirements file to the install.
+            install = " ".join((install, "--requirement={:s}".format(req)))
+        pytest = which("pytest", path=path) or "pytest"  # Travis CI workaround
+        test = "{:s} --verbose tests/".format(pytest)
+        check_call(split(test))
+        
+        
     return 0
     
     
