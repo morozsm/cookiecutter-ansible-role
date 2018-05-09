@@ -1,3 +1,19 @@
+# Ignore Python build artifacts.
+
+*.pyc
+*.pyo
+
+
+# Ignore pyenv files.
+
+.python-version
+
+
+# Ignore virtualenv environments.
+
+.venv*/
+
+
 # Ignore OS metadata files.
 
 .DS_Store
