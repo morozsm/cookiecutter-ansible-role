@@ -1,6 +1,0 @@
-## Test playbook for the {{ cookiecutter.role_name }} role.
-##
-- hosts: localhost
-
-  roles:
-    - role: {{ cookiecutter.role_name }}
