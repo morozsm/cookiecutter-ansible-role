@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: {{ cookiecutter.author_name }}
-  description:
+  description: Template Ansible role
   version: {{ cookiecutter.project_version }}
   license: MIT
   min_ansible_version: 2.8
