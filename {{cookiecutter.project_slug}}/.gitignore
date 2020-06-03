@@ -1,7 +1,6 @@
-# Ignore Python build artifacts.
+# Ignore virtualenv environments.
 
-*.pyc
-*.pyo
+.venv*/
 
 
 # Ignore pyenv files.
@@ -9,11 +8,17 @@
 .python-version
 
 
-# Ignore virtualenv environments.
+# Ignore settings for various IDEs.
 
-.venv*/
+.idea/
+.project/
+.pydevproject/
+nbproject/
+*.code-workspace
+.vscode/
 
 
 # Ignore OS metadata files.
 
 .DS_Store
+Thumbs.db
