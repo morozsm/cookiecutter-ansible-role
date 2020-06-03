@@ -1,0 +1,31 @@
+---
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: Bionic
+    image: ubuntu:18.04
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+scenario:
+  test_sequence:
+    - dependency
+    #- lint
+    - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - cleanup
+    - destroy

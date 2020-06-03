@@ -1,11 +1,11 @@
-## Travis CI configuration for the ansible-role project template.
-##
-##  <https://travis-ci.org/mdklatt/cookiecutter-ansible-role>
-##
+# <https://travis-ci.org/mdklatt/cookiecutter-ansible-role>
 language: python
 
 python:
-  - "3.6"
+  - "3.7"
+
+services:
+  - docker
 
 branches:
   only:
@@ -14,9 +14,9 @@ branches:
 
 sudo: false  # use container infrastructure
 
+
 install:
-  - python -m pip install ansible
-  - python -m pip install -r requirements.txt -r tests/requirements.txt
+  - python -m pip install -r requirements.txt
 
 script:
   - python tests/test_template.py

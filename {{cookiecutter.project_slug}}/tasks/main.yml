@@ -1,2 +1,7 @@
-## Tasks for the {{ cookiecutter.role_name }} role.
-##
+---
+- name: Create hello.sh script
+  template:
+    src: "{% raw %}{{ role_path }}{% endraw %}/templates/hello.sh.j2"
+    dest: hello.sh
+    force: true
+    mode: "0755"

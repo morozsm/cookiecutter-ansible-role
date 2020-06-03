@@ -1,12 +1,8 @@
-..  README for the {{ cookiecutter.role_name }} role.
-
-{{ "=" * cookiecutter.role_name|length }}
+{{ "#" * cookiecutter.role_name|length }}
 {{ cookiecutter.role_name }}
-{{ "=" * cookiecutter.role_name|length }}
-..  _Ansible: http://docs.ansible.com/ansible
+{{ "#" * cookiecutter.role_name|length }}
 
-
-This `Ansible`_ role will ....
+This is a sample `Ansible`_ role will install ``hello.sh`` on the target host.
 
 
 Requirements
@@ -36,3 +32,6 @@ Example Playbook
       
       roles:
         - name: {{ cookiecutter.role_name }}
+
+
+..  _Ansible: http://docs.ansible.com/ansible

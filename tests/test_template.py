@@ -1,21 +1,17 @@
 """ Test the ansible-role Cookiecutter template.
 
 A template project is created in a temporary directory, and the role's test
-suite is run in a virtualenv environment.
+suite is run using molecule in a virtualenv environment.
 
 """
-from contextlib import contextmanager
 from json import load
 from os import chdir
-from os import getcwd
-from os.path import abspath
-from os.path import dirname
-from os.path import join
+from os import environ
+from os.path import pathsep
+from pathlib import Path
 from shlex import split
-from shutil import rmtree
-from shutil import which
 from subprocess import check_call
-from tempfile import mkdtemp
+from tempfile import TemporaryDirectory
 from venv import create
 
 from cookiecutter.main import cookiecutter
@@ -25,36 +21,22 @@ def main():
     """ Execute the test.
     
     """
-    @contextmanager
-    def tmpdir():
-        """ Enter a self-deleting temporary directory. """
-        cwd = getcwd()
-        tmp = mkdtemp()
-        try:
-            chdir(tmp)
-            yield tmp
-        finally:
-            rmtree(tmp)
-            chdir(cwd)
+    def pymod(command: str):
+        """ Run a Python module inside the virtual environment. """
+        path = pathsep.join([str(venv.joinpath("bin")), environ["PATH"]])
+        check_call(split(f"python -m {command:s}"), env={"PATH": path})
         return
 
-    template = dirname(dirname(abspath(__file__)))
-    defaults = load(open(join(template, "cookiecutter.json")))
-    with tmpdir():
-        cookiecutter(template, no_input=True)
+    template = Path(__file__).resolve().parents[1]
+    defaults = load(Path(template, "cookiecutter.json").open("rt"))
+    with TemporaryDirectory() as tmpdir:
+        chdir(tmpdir)
+        cookiecutter(str(template), no_input=True)
         chdir(defaults["project_slug"])
-        create("venv", with_pip=True)
-        path = join("venv", "bin")
-        pip = which("pip", path=path) or "pip"  # Travis CI workaround
-        install = "{:s} install .".format(pip)
-        for req in (join(root, "requirements.txt") for root in (".", "test")):
-            # Add each requirements file to the install.
-            install = " ".join((install, "--requirement={:s}".format(req)))
-        pytest = which("pytest", path=path) or "pytest"  # Travis CI workaround
-        test = "{:s} --verbose tests/".format(pytest)
-        check_call(split(test))
-        
-        
+        venv = Path(".venv")
+        create(venv, with_pip=True)
+        pymod("pip install -r molecule/requirements.txt")
+        pymod("molecule test")
     return 0
     
     

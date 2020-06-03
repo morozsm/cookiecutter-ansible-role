@@ -1,33 +1,29 @@
-=============================
+#############################
 Ansible Role Project Template
-=============================
+#############################
+
 .. |travis.png| image:: https://travis-ci.org/mdklatt/cookiecutter-ansible-role.png?branch=master
    :alt: Travis CI build status
    :target: `travis`_
-.. _travis: https://travis-ci.org/mdklatt/cookiecutter-ansible-role
-.. _Cookiecutter: http://cookiecutter.readthedocs.org
-.. _Ansible: http://docs.ansible.com/ansible
 
-
+=====================
 Overview |travis.png|
 =====================
 
 This is a `Cookiecutter`_ template for creating an `Ansible`_ role.
 
 
+======================
 Template Role Features
 ======================
-.. _MIT License: http://choosealicense.com/licenses/mit
-.. _pytest: http://pytest.org
 
 * `MIT License`_
-* `pytest`_ test suite
+* `Molecule`_ integration
 
 
+=====
 Usage
 =====
-.. _GitHub: https://github.com/mdklatt/cookiecutter-ansible-role
-
 
 Install Python requirements for using the template:
 
@@ -41,3 +37,11 @@ Create a new project directly from the template on `GitHub`_:
 .. code-block:: shell
    
     $ cookiecutter gh:mdklatt/cookiecutter-ansible-role
+
+
+.. _travis: https://travis-ci.org/mdklatt/cookiecutter-ansible-role
+.. _Cookiecutter: http://cookiecutter.readthedocs.org
+.. _Ansible: http://docs.ansible.com/ansible
+.. _MIT License: http://choosealicense.com/licenses/mit
+.. _Molecule: https://molecule.readthedocs.io/en/latest
+.. _GitHub: https://github.com/mdklatt/cookiecutter-ansible-role
