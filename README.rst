@@ -36,8 +36,7 @@ Create a new project directly from the template on `GitHub`_:
 
 .. code-block:: shell
    
-    $ cookiecutter gh:mdklatt/cookiecutter-ansible-role
-
+    $ cookiecutter gh:morozsm/cookiecutter-ansible-role
 
 .. _travis: https://travis-ci.org/mdklatt/cookiecutter-ansible-role
 .. _Cookiecutter: http://cookiecutter.readthedocs.org
