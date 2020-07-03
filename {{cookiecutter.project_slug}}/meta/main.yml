@@ -1,14 +1,14 @@
 ---
 galaxy_info:
   author: {{ cookiecutter.author_name }}
-  description: Template Ansible role
+  description: ServerStack ansible role
   version: {{ cookiecutter.project_version }}
   license: MIT
   min_ansible_version: 2.8
   platforms:
-    - name: Ubuntu
+    - name: EL
       versions:
-        - bionic  # 18.04
+        - 8
 
   galaxy_tags: []
 
