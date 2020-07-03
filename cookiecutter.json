@@ -3,5 +3,6 @@
     "role_name": "{{ cookiecutter.project_slug }}",
     "author_name": "Author Name",
     "author_email": "author.name@example.com",
-    "project_version": "0.1.0.dev0"
+    "project_version": "0.1.0.dev0",
+    "instance_name": "instance"
 }

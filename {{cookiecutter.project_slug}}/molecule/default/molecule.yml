@@ -7,7 +7,7 @@ lint: |
   ansible-lint -x 403
   flake8
 platforms:
-  - name: test.rcnpub.ams4.rcnhost.com
+  - name: {{ cookiecutter.instance_name }}
     image: docker.io/centos:8
     command: /sbin/init
     tmpfs:
