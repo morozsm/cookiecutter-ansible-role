@@ -1,11 +1,21 @@
 ---
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint -x 403
+  flake8
 platforms:
-  - name: Bionic
-    image: ubuntu:18.04
+  - name: test.rcnpub.ams4.rcnhost.com
+    image: docker.io/centos:8
+    command: /sbin/init
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
 provisioner:
   name: ansible
   lint:
