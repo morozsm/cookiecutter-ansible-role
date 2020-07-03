@@ -19,7 +19,7 @@ from cookiecutter.main import cookiecutter
 
 def main():
     """ Execute the test.
-    
+
     """
     def pymod(command: str):
         """ Run a Python module inside the virtual environment. """
@@ -38,8 +38,8 @@ def main():
         pymod("pip install -r molecule/requirements.txt")
         pymod("molecule test")
     return 0
-    
-    
+
+
 # Make the script executable.
 
 if __name__ == "__main__":
