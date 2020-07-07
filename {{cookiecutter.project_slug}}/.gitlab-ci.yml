@@ -1,0 +1,6 @@
+before_script:
+ - pip3 install molecule
+
+ansible_test:
+  script:
+    - molecule test
