@@ -1,6 +1,6 @@
 {
     "project_slug": "rolename",
-    "role_name": "{{ cookiecutter.project_slug }}",
+    "role_name": "rolename",
     "author_name": "Author Name",
     "author_email": "author.name@example.com",
     "project_version": "0.1.0.dev0",
